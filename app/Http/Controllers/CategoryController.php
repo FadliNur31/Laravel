@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\category;
+use App\Models\CheckoutReport;
 
 class CategoryController extends Controller
 {
@@ -13,6 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = category::all();
+        
         return view('categories.index',compact('categories'));
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ReportController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\cart;
@@ -22,11 +23,19 @@ Route::resource('/home/admin', AdminController::class)->middleware('isAdmin');
 Route::resource('/home/category', CategoryController::class)->middleware('isAdmin');
 Route::resource('/home/user', UserController::class)->middleware('isAdmin');
 Route::resource('/home/cart', CartController::class)->middleware(['auth', 'verified']);
+Route::resource('/home/report', ReportController::class)->middleware(['auth', 'verified']);
 
 Route::get('/home', function () {
     $userId = Auth::id(); 
     $cart = cart::where('user_id', $userId)->first(); 
-    $cartItems = $cart->items()->with('product')->get();
+    if ($cart){
+        $cartItems = $cart->items()->with('product')->get();
+    }else{
+        $cart = Cart::firstOrCreate([
+            'user_id' => $userId,
+        ]);
+        $cartItems = $cart->items()->with('product')->get();
+    }
     
     $products = Product::take(4)->get();
 

@@ -35,6 +35,23 @@
                <span class="flex-1 ms-3 whitespace-nowrap">Categories</span>
             </a>
          </li>
+         <li>
+            <a href="{{route('report.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+               <!-- Rectangle background -->
+               <rect x="2" y="4" width="20" height="16" rx="2" ry="2" fill="currentColor"></rect>
+               <!-- Chart bars -->
+               <rect x="6" y="12" width="2" height="6" fill="white"></rect>
+               <rect x="10" y="8" width="2" height="10" fill="white"></rect>
+               <rect x="14" y="6" width="2" height="12" fill="white"></rect>
+               <!-- Arrow upward -->
+               <path d="M18 6l-3-3-3 3h2v4h2V6h2z" fill="white"></path>
+            </svg>
+
+
+               <span class="flex-1 ms-3 whitespace-nowrap">Laporan</span>
+            </a>
+         </li>
        
       </ul>
    </div>

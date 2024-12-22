@@ -19,16 +19,7 @@
         </div>
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
-            <button @click="slideOver = !slideOver" type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-              <span class="absolute -inset-1.5"></span>
-              <span class="sr-only">View notifications</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 6h15l-2 9H7L5 6z" />
-                  <path d="M4 6h1" />
-                  <circle cx="8" cy="18" r="1" />
-                  <circle cx="16" cy="18" r="1" />
-              </svg>
-            </button>
+
 
             <!-- Profile dropdown -->
             <div class="relative ml-3">
@@ -106,12 +97,6 @@
           <button @click="slideOver = !slideOver" type="button" class="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
             <span class="absolute -inset-1.5"></span>
             <span class="sr-only">View notifications</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 6h15l-2 9H7L5 6z" />
-                  <path d="M4 6h1" />
-                  <circle cx="8" cy="18" r="1" />
-                  <circle cx="16" cy="18" r="1" />
-              </svg>
           </button>
         </div>
         <div class="mt-3 space-y-1 px-2 text-white">

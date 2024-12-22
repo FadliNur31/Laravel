@@ -3,19 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\CheckoutReport;
+use Illuminate\Support\Facades\Auth;
 
-
-class AdminController extends Controller
+class ReportController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::All();
-
-        return view('admin.adminHome',compact('products'));
+        $checkout = CheckoutReport::with('user')->get();
+        return view('report.index', compact('checkout'));
     }
 
     /**
@@ -23,7 +22,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        $userId = Auth::id();
+        $checkouts = CheckoutReport::where('user_id', $userId)->get();
+        return view('report.history', compact('checkouts'));
     }
 
     /**
@@ -39,7 +40,8 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $checkout = CheckoutReport::find($id);
+        return view('report.detail',compact('checkout'));
     }
 
     /**
@@ -55,7 +57,11 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $checkout = CheckoutReport::findOrFail($id);
+        $checkout->approval = $request->approval;
+        $checkout->save();
+    
+        return redirect()->back()->with('success', 'Approval status updated successfully.');
     }
 
     /**

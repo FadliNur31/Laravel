@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\cart;
 use App\Models\cart_item;
 use App\Models\Product;
+use App\Models\CheckoutReport;
 
 class CartController extends Controller
 {
@@ -19,8 +20,41 @@ class CartController extends Controller
         $cart = Cart::firstOrCreate([
             'user_id' => $userId,
         ]);
-        $cartItem = cart_item::where('cart_id', $cart->id)->delete();
-        $product = Product::where('stock', '<=', 0)->delete();
+    
+        // Ambil detail keranjang sebelum menghapus item
+        $cartItems = cart_item::where('cart_id', $cart->id)->get();
+    
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('home')->with('error', 'Keranjang Anda kosong.');
+        }
+    
+        $cartDetails = $cartItems->map(function ($item) {
+            return [
+                'nama' => $item->product->nama,
+                'size' => $item->product->size,
+                'quantity' => $item->quantity,
+                'warna' => $item->product->warna,
+                'price' => $item->product->price,
+            ];
+        });
+
+        $harga = 0;
+        foreach ($cartItems as $item) {
+            $harga += $item->product->price * $item->quantity;
+        }
+    
+        // Buat laporan checkout
+        CheckoutReport::create([
+            'user_id' => $userId,
+            'cart_details' => $cartDetails,
+            'total_harga' => $harga,
+            'aproval' => 'not_approved',
+        ]);
+    
+        cart_item::where('cart_id', $cart->id)->delete();
+    
+        Product::where('stock', '<=', 0)->delete();
+    
         return redirect()->route('home')->with('success', 'Produk Sukses di Checkout');
     }
 
