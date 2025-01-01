@@ -31,6 +31,9 @@
                     <div class="mb-5">
                         <label for="image" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Link Gambar</label>
                         <input type="text" name="image" id="image" class="block w-full p-4 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <span class="dark:text-white">Or</span>
+                        <label for="images" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Foto Produk:</label>
+                        <input type="file" name="image" id="images" class="block w-full p-4 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                     <div class="mb-5">
                         <label for="size" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Ukuran</label>
@@ -48,6 +51,11 @@
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="mb-5">
+                        <label for="deskripsi" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Deskripsi Produk</label>
+                        <textarea name="deskripsi" id="deskripsi" rows="4" class="block w-full p-4 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                    </div>
+
                     <div>
                             <x-secondary-button class="mb-3 " type="submit">Save</x-secondary-button>
                     </div>

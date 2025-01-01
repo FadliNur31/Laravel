@@ -16,7 +16,7 @@
         <div class="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
         @foreach ($products as $product)
         <div class="group">
-            <img src="{{ $product->image }}" alt="{{ $product->nama }}" class="aspect-square w-full rounded-lg bg-gray-200 object-cover object-top hover:opacity-75 xl:aspect-[7/8] hover:cursor-pointer ">
+            <img src="{{ filter_var($product->image, FILTER_VALIDATE_URL) ? $product->image : asset('storage/' . $product->image) }}" alt="{{ $product->nama }}" class="aspect-square w-full rounded-lg bg-gray-200 object-cover object-top hover:opacity-75 xl:aspect-[7/8] hover:cursor-pointer ">
             <h3 class="ms-3 mt-4 text-sm text-gray-700">{{ $product->nama }}</h3>
             <p class="ms-3 mt-1 text-lg font-medium text-gray-900">Rp{{number_format($product->price,2,",",".")}}</p>
             <div class="flex ms-3">

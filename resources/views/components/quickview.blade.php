@@ -29,32 +29,33 @@
           </button>
 
           <div class="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
-            <img src="{{$detail->image}}" alt="Two each of gray, white, and black shirts arranged on table." class="aspect-[2/3] w-full rounded-lg bg-gray-100 object-cover sm:col-span-4 lg:col-span-5">
+            <img src="{{ filter_var($detail->image, FILTER_VALIDATE_URL) ? $detail->image : asset('storage/' . $detail->image) }}" alt="Two each of gray, white, and black shirts arranged on table." class="aspect-[2/3] w-full rounded-lg bg-gray-100 object-cover sm:col-span-4 lg:col-span-5">
             <div class="sm:col-span-8 lg:col-span-7">
               <h2 class="text-2xl font-bold text-gray-900 sm:pr-12">{{$detail->nama}}</h2>
 
               <section aria-labelledby="information-heading" class="mt-2">
                 <h3 id="information-heading" class="sr-only">Product information</h3>
 
-                <p class="text-2xl text-gray-900">Rp{{number_format($detail->price,2,",",".")}}</p>
+                <p class="text-2xl text-gray-900">Rp {{number_format($detail->price,0,",",".")}}</p>
+                <p class="mt-4 text-sm text-gray-700">
+                {!! nl2br(e($detail->deskripsi)) !!}
 
-                <!-- Reviews -->
-                
+                </p>
               </section>
 
               <section aria-labelledby="options-heading" class="mt-10">
                 <h3 id="options-heading" class="sr-only">Product options</h3>
 
-                <form class="max-w-sm mx-auto" action="{{ route('cart.index') }}" method="POST" enctype="multipart/form-data">
+                <form class="max-w-sm " action="{{ route('cart.index') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                   <fieldset aria-label="Choose a color">
                     <legend class="text-sm font-medium text-gray-900">Color</legend>
 
-                    <div class="mt-4 flex items-center space-x-3">
+                    <div class="mt-4 flex justify-center space-x-3 size-8 rounded-full w-16 border border-black/10 ">
                       <!-- Active and Checked: "ring ring-offset-1" -->
-                      <label aria-label="White" class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-none">
-                        <span aria-hidden="true" class="size-8 rounded-full border border-black/10 bg-{{$detail->warna}}"></span>
-                      </label>
+
+                        <span aria-hidden="true" >{{$detail->warna}}</span>
+                      
                     </div>
                   </fieldset>
 
@@ -88,4 +89,3 @@
     </div>
   </div>
 </div>
-

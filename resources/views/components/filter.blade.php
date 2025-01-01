@@ -160,6 +160,11 @@
                       class="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
                     <label for="filter-mobile-size-4" class="ml-3 min-w-0 flex-1 text-gray-500">S</label>
                   </div>
+                  <div class="flex items-center">
+                    <input id="filter-mobile-size-4" name="size[]" value="ONE SIZE" type="checkbox"
+                      class="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                    <label for="filter-mobile-size-4" class="ml-3 min-w-0 flex-1 text-gray-500">One Size</label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -351,6 +356,11 @@
                       class="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
                     <label for="filter-size-4" class="ml-3 text-sm text-gray-600">S</label>
                   </div>
+                  <div class="flex items-center">
+                    <input id="filter-mobile-size-4" name="size[]" value="ONE SIZE" type="checkbox"
+                      class="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                    <label for="filter-mobile-size-4" class="ml-3 min-w-0 flex-1 text-gray-500">One Size</label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -373,7 +383,7 @@
                         <div class="group relative" x-data="{ Modal: false }">
                             <!-- Product Image -->
                             <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                <img src="{{$product->image}}" alt="Product image" class="h-full w-full object-cover object-top lg:h-full lg:w-full">
+                                <img src="{{ filter_var($product->image, FILTER_VALIDATE_URL) ? $product->image : asset('storage/' . $product->image) }}" alt="Product image" class="h-full w-full object-cover object-top lg:h-full lg:w-full">
                             </div>
                             <div class="mt-4 flex justify-between">
                                 <div>
@@ -387,7 +397,7 @@
                                 </div>
                                 <x-quickview :detail='$product' x-show="Modal" />
 
-                                <p class="text-sm font-medium text-gray-900">Rp{{number_format($product->price,2,",",".")}}</p>
+                                <p class="text-sm font-medium text-gray-900">Rp {{number_format($product->price,0,",",".")}}</p>
                             </div>
                             <div @click="Modal = !Modal" class="absolute inset-0 cursor-pointer"></div>
                         </div>

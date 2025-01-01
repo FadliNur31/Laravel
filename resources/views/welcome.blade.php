@@ -16,7 +16,7 @@
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
           <span class="sr-only">Your Company</span>
-          <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="">
+          <img class=" h-9 w-auto" src="{{ asset('storage/images/BB.svg') }}" alt="">
         </a>
       </div>
       <div class="flex lg:hidden">
@@ -68,7 +68,7 @@
         <div class="flex items-center justify-between">
           <a href="#" class="-m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
-            <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="">
+            <img class="h-8 w-auto" src="{{ asset('storage/images/BB.svg') }}" alt="">
           </a>
           <button @click = "open = !open" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
             <span class="sr-only">Close menu</span>
@@ -124,7 +124,7 @@
         </div>
       </div>
       <div class="text-center">
-        <h1 class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">E-commerce Batik Terpercaya</h1>
+        <h1 class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Tempatnya Batik Nusantara</h1>
         <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">Temukan keindahan batik asli Indonesia dengan desain unik, kualitas terbaik, dan pengrajin lokal. Belanja batik secara mudah dan aman, langsung dari tangan kreatifnya.emukan keindahan batik asli Indonesia dengan desain unik, kualitas terbaik, dan pengrajin lokal. Belanja batik secara mudah dan aman, langsung dari tangan kreatifnya.</p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a href="{{ route('login') }}" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>

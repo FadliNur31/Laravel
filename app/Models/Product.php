@@ -17,6 +17,7 @@ class Product extends Model
         'stock',
         'category_id',
         'image',
+        'deskripsi'
     ];
 
     public function scopeFilter($query, array $filters){

@@ -37,15 +37,15 @@
         <tbody>
             @foreach ($checkout->cart_details as $cs)
                 <tr>
-                    <td class="text-left text-gray-700">{{$cs['nama']}}</td>
-                    <td class="text-right text-gray-700">Rp{{number_format($cs['price'],2,",",".")}}</td>
+                    <td class="text-left text-gray-700">{{$cs['nama']}} x{{$cs['quantity']}}</td>
+                    <td class="text-right text-gray-700">Rp{{number_format($cs['price'],0,",",".")}}</td>
                 </tr>    
             @endforeach
         </tbody>
         <tfoot>
             <tr>
                 <td class="text-left font-bold text-gray-700">Total</td>
-                <td class="text-right font-bold text-gray-700">Rp{{number_format($checkout->total_harga,2,",",".")}}</td>
+                <td class="text-right font-bold text-gray-700">Rp{{number_format($checkout->total_harga,0,",",".")}}</td>
             </tr>
         </tfoot>
     </table>

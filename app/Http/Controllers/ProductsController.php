@@ -48,10 +48,16 @@ class ProductsController extends Controller
             'stok' => 'required|integer',
             'price' => 'required|numeric',
             'warna' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'nullable',
             'size' => 'required|string',
             'category_id' => 'required|exists:categories,id', 
         ]);
+        $image = null;
+        if ($request->has('image') && filter_var($request->image, FILTER_VALIDATE_URL)) {
+            $image = $request->image;
+        } elseif ($request->hasFile('image')) {
+            $image = $request->file('image')->store('images', 'public');
+        }
 
         // Simpan produk
         Product::create([
@@ -60,8 +66,9 @@ class ProductsController extends Controller
             'price' => $request->price,
             'warna' => $request->warna,
             'category_id' => $request->category_id,
-            'image' => $request->image,
+            'image' => $image,
             'size' => $request->size,
+            'deskripsi' =>$request->deskripsi,
         ]);
 
         return redirect()->route('admin.index');

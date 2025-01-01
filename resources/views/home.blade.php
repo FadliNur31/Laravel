@@ -9,7 +9,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="h-full">
-<div class="min-h-full" x-data="{ slideOver: false, alert: true }">
+<div class="min-h-full" x-data="{ slideOver: false, alert: true } ">
   <x-navbar></x-navbar>
   
   @if(session('success'))
